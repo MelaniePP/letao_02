@@ -60,6 +60,7 @@ $(".dropdown-menu").on("click","a",function(){
   var id = $(this).data("id");
   $(".text").text(txt);
   $('[name="categoryId"]').val(id);
+  $('[name="categoryId"]').trigger("input");
 })
 
 
@@ -72,6 +73,7 @@ $("#fileupload").fileupload({
     var url = res.picAddr;
     $("#imgBox img").attr("src",url);
     $('[name="brandLogo"]').val(url);
+    $('[name="brandLogo"]').trigger("input");
   }
 });
 
@@ -122,7 +124,12 @@ $("#form").on("success.form.bv",function(e){
       if(info.success){
         $("#addModal").modal("hide");
         currentPage = 1;
-        render()
+        render();
+        // 重置表单
+        $("#form").data("bootstrapValidator").resetForm(true);
+        // 一级分类和图片需要手动重置
+        $('[name="categoryId"]').val("请输入一级分类");
+        $("#imgBox img").attr("src","./images/default.png")
       }
     }
   })
