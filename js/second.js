@@ -13,7 +13,7 @@ $(function(){
       },
       dataType:"json",
       success:function(info){
-        console.log(info);
+        // console.log(info);
         $("tbody").html(template("secondtmp",info));
         // 分页
       
@@ -67,7 +67,7 @@ $(".dropdown-menu").on("click","a",function(){
 $("#fileupload").fileupload({
   dataType:"json",
   done:function(e,data){
-    console.log(data);
+    // console.log(data);
     var res = data.result;
     var url = res.picAddr;
     $("#imgBox img").attr("src",url);
@@ -111,7 +111,21 @@ $("#form").bootstrapValidator({
 
 // 表单校验成功后事件
 $("#form").on("success.form.bv",function(e){
-  e.preventDefault()
+  e.preventDefault();
+  $.ajax({
+    type:"post",
+    url:"/category/addSecondCategory",
+    data:$("#form").serialize(),
+    dataType:"json",
+    success:function(info){
+      // console.log(info);
+      if(info.success){
+        $("#addModal").modal("hide");
+        currentPage = 1;
+        render()
+      }
+    }
+  })
 })
 
 
