@@ -14,7 +14,7 @@ ul{
 .lt_container{
   width: 100%;
   height: 100%;
-  background-color: pink;
+  background-color: #fff;
   max-width: 640px;
   min-width: 320px;
   margin: 0 auto;
@@ -65,8 +65,74 @@ ul{
   width: 100%;
   height: 100%;
   position: relative;
-  background-color: skyblue;
+  /* background-color: skyblue; */
 }
+
+/* 导航 */
+.lt_main .lt_nav{
+  padding: 10px;
+  overflow: hidden;
+}
+.lt_main .lt_nav ul li{
+  float: left;
+  width: 33.3%;
+  
+}
+.lt_main .lt_nav ul li img{
+  display: block;
+  width: 100%;
+}
+
+/* 产品部分 */
+.lt_main .lt_product{
+  padding:10px;
+}
+.lt_main .lt_product ul li{
+  float: left;
+  width: 48%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.lt_main .lt_product ul li:nth-child(2n+1){
+  margin-right: 4%;
+}
+.lt_main .lt_product ul li p{
+  margin-bottom: 10px;
+}
+.lt_main .lt_product ul li .price{
+  color: red;
+}
+.lt_main .lt_product ul li .oldPrice{
+  text-decoration: line-through;
+}
+.lt_main .lt_product ul li img{
+  display: block;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* 底部 */
 .lt_footer{
