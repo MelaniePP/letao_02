@@ -181,6 +181,14 @@ $(function(){
           currentPage = 1;
           render();
           $("#addModal").modal("hide");
+
+          // 重置表单
+          $("#form").data("bootstrapValidator").resetForm(true);
+          // 重置下拉单
+          $(".text").text("请选择二级分类");
+          // 重置图片
+          $(".imgBox img").remove();
+          picArr=[];
         }
       }
     })
