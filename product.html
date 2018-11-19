@@ -58,7 +58,7 @@
       <li class="active">商品管理</li>
     </ol>
     <div class="lt_content">
-      <button class="btn btn-default">添加商品</button>
+      <button class="btn btn-default addPro">添加商品</button>
       <table class="table table-bordered table-hover mt_20">
         <thead>
             <!-- 序号	商品名称	商品描述	商品库存	商品尺寸	商品状态	操作 -->
@@ -82,6 +82,11 @@
         </tbody>
 
       </table>
+      <div class="text-right">
+        <ul id="paginator">
+
+        </ul>
+      </div>
     </div>
 
   </div>
@@ -114,9 +119,86 @@
   </div>
 </div>
 
+<!-- 添加商品模态框 -->
+<div class="modal fade" tabindex="-1" id="addModal">
+    
+  
+    <!-- 内部的模态框 -->
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- 头部 -->
+        <form id="form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          <h4 class="modal-title">添加商品</h4>
+        </div>
+        <!-- 中间 -->
+        <div class="modal-body">
+            <div class="form-group">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                      
+                      <span class="text">请选择二级分类</span>
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <!-- <li><a tabindex="-1" href="#">Action</a></li>
+                      <li><a tabindex="-1" href="#">Another action</a></li>
+                      <li><a tabindex="-1" href="#">Something else here</a></li>
+                      <li><a tabindex="-1" href="#">Separated link</a></li> -->
+                      <!-- 挖坑 -->
+                    </ul>
+                    <input type="hidden" name="brandId">
+                    <!-- 火热的品牌 所有的品牌都火热 -->
+                    <input type="hidden" name="hot" value="1" >
+                  </div>
+            </div>
+            <div class="form-group">
+              <input type="text" name="proName" class="form-control" placeholder="请输入商品名称">
+            </div>
+            <div class="form-group">
+              <textarea type="text" name="proDesc" class="form-control" placeholder="请输入商品描述" cols="30" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="text" name="num" class="form-control" placeholder="请输入商品库存">
+            </div>
+            <div class="form-group">
+                <input type="text" name="size" class="form-control" placeholder="请输入商品尺码">
+            </div>
+            <div class="form-group">
+                <input type="text" name="oldPrice" class="form-control" placeholder="请输入商品原价">
+            </div>
+            <div class="form-group">
+                <input type="text" name="price" class="form-control" placeholder="请输入商品现价">
+            </div>
+            <div class="form-group">
+
+              <label class="btn btn-default" for="fileupload">上传图片</label>
+              <input multiple type="file" name="pic1" data-url="/product/addProductPic" id="fileupload" style="display: none">
+              <!-- <input  mutiple type="file" id="fileupload" style="display: none" name="pic1" data-url="/product/addProductPic"> -->
+              
+            </div>
+            <div class="imgBox form-group" style="overflow: hidden;">
+              <!-- <img src="./images/default.png" alt="" style="height: 100px">
+              <img src="./images/default.png" alt="" style="height: 100px">
+              <img src="./images/default.png" alt="" style="height: 100px"> -->
+              <input type="hidden" name="picStatus">
+            </div>
+
+        </div>
+        <!-- 底部 -->
+        <!-- data-dismiss="modal" 可以用于关闭模态框 -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-primary" id="add-Btn">添加</button>
+        </div>
+      </form>
+      </div>
+    </div>
+</div>
 
 
-<!-- 准备模态框 -->
+<!-- 准备模板引擎-->
 <script type="text/html" id="productTmp">
 {{ each rows v i }}
 <tr>
@@ -138,12 +220,23 @@
 {{ /each }}
 </script>
 
+<!-- 下拉菜单模板引擎 -->
+<script type="text/html" id="downtmp">
+{{ each rows v i }}
+<li><a tabindex="-1" href="#" data-id="{{ v.id}}">{{ v.brandName }}</a></li>
+
+{{ /each }}
+</script>
+
 
 <script src="./lib/jquery/jquery.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script src="./lib/nprogress/nprogress.js"></script>
 <script src="./lib/artTemplate/template-web.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
 <script src="./js/common.js"></script>
 <!-- 判断用户是否登录 -->
 <script src="./js/isLogin.js"></script>
