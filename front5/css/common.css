@@ -99,3 +99,18 @@ img {
 .lt_footer ul li.current a p{
   color: orange;
 }
+/* 搜索框样式 */
+.lt_main .lt_search{
+  padding: 10px;
+  position: relative;
+}
+.lt_main .lt_search input{
+  height: 34px;
+  border: 1px solid #007AFF;
+  font-size: 12px;
+}
+.lt_main .lt_search button{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

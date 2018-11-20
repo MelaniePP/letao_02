@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./lib/mui/css/mui.css">
   <link rel="icon" href="./favicon.ico">
   <link rel="stylesheet" href="./lib/fa/css/font-awesome.min.css">
-  <link rel="stylesheet" href="./css/search.css">
+  <link rel="stylesheet" href="./css/searchList.css">
   <link rel="stylesheet" href="./css/common.css">
 </head>
 <body>
@@ -61,32 +61,13 @@
     </div>
   </div>
  
-  <!-- 历史记录模板引擎 -->
-  <script type="text/html" id="historytmp">
-    {{ if list.length == 0 }}
-   
-    <p>没有更多数据了</p>
-    {{ else }}
-    <div class="title">
-      <span class="mui-pull-left">搜索历史</span>
-      <span class="mui-pull-right emptyBtn"><i class="fa fa-trash"></i>清空记录</span>
-    </div>
-    {{ each list v i }}
-      <div class="content">
-        <ul>
-          <li><a href="#">{{ v }}</a><i class="btn_delete mui-pull-right mui-icon mui-icon-closeempty" data-index="{{ i }}"></i></li>
-        </ul>
-      </div>
-      {{ /each }}
-    {{ /if }}
-  </script>
-
+ 
 
 
   <script src="./lib/mui/js/mui.js"></script>
   <script src="./lib/zepto/zepto.min.js"></script>
   <script src="./lib/artTemplate/template-web.js"></script>
   <script src="./js/common.js"></script>
-  <script src="./js/search.js"></script>
+  <script src="./js/searchList.js"></script>
 </body>
 </html>
