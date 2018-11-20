@@ -31,8 +31,14 @@ function getHistory(){
 //  2. 清空所有历史
 // 点击“清空”，清空本地数据
 $(".lt_history").on("click",".emptyBtn",function(){
-  localStorage.removeItem("search_list");
-  render();
+  mui.confirm("你确定要清空历史记录嘛?","温馨提示",["取消","确认"],function(e){
+    // console.log(e);
+    if(e.index==1){
+
+      localStorage.removeItem("search_list");
+    }
+    render();
+  })
 })
 
 // 功能 3. 删除单个历史记录

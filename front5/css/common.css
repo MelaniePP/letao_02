@@ -108,6 +108,7 @@ img {
   height: 34px;
   border: 1px solid #007AFF;
   font-size: 12px;
+  margin: 0;
 }
 .lt_main .lt_search button{
   position: absolute;
